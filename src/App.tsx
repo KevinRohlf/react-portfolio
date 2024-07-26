@@ -58,7 +58,6 @@ function App() {
             {DATA.map((item, index) => (
               <TabBtn
                 key={index}
-                index={index}
                 active={selection === item.name}
                 onClick={() => setSelection(item.name)}
               >
@@ -76,8 +75,13 @@ function App() {
           </div>
         </div>
       </div>
-      <footer></footer>
+      <footer className=" absolute bottom-0 max-w-7xl w-screen bg-slate-700 flex justify-around h-20 items-center rounded-t-3xl">
+        <a href="/impressum">Impressum</a>
+        <span>© Kevin Rohlf {new Date().getFullYear()}</span>
+        <a href="/datenschutz">Datenschutz</a>
+      </footer>
     </div>
+
   );
 }
 
