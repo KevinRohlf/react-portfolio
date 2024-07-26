@@ -8,6 +8,7 @@ import MailImg from "./assets/MailImg";
 import { DATA } from "./data";
 import { useState } from "react";
 import TabBtn from "./components/TabBtn";
+import Card from "./components/Card";
 
 function App() {
   const [selection, setSelection] = useState("Projekte");
@@ -43,18 +44,18 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="rounded-3xl p-10 bg-slate-700 shadow-md">
+          <Card>
             <h2 className="text-2xl">Über mich</h2>
-            <p className="mt-5">
+            <div className="mt-5">
               Ich bin ein Frontend Entwickler aus Hamburg. Ich habe Erfahrung
               mit React, TypeScript, TailwindCSS und Next.js. Ich bin immer
               offen für neue Herausforderungen und freue mich darauf, neue
               Technologien zu lernen.
-            </p>
-          </div>
+            </div>
+          </Card>
         </div>
         <div className="w-1/2 flex flex-col items-center gap-10">
-          <nav className="w-4/5 bg-slate-700 h-12 rounded-3xl flex justify-center items-center">
+          <nav className="w-4/5 bg-slate-700 h-12 rounded-3xl flex justify-center items-center shadow-md">
             {DATA.map((item, index) => (
               <TabBtn
                 key={index}
@@ -65,14 +66,14 @@ function App() {
               </TabBtn>
             ))}
           </nav>
-          <div className="w-4/5 min-h-32 bg-slate-700 rounded-3xl p-10 ">
+          <Card className="w-4/5 min-h-96">
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
               asperiores, ipsum placeat quidem corporis sequi minus numquam
               optio nostrum autem! Eaque voluptatibus quaerat minima enim
               eligendi eveniet asperiores possimus nesciunt?
             </span>
-          </div>
+          </Card>
         </div>
       </div>
       <footer className=" absolute bottom-0 max-w-7xl w-screen bg-slate-700 flex justify-around h-20 items-center rounded-t-3xl">
