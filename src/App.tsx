@@ -16,9 +16,9 @@ function App() {
     </BrowserRouter>
     </div>
     <footer className=" absolute bottom-0 max-w-7xl w-screen bg-secondary flex justify-around h-20 items-center rounded-t-3xl">
-      <a href="/impressum">Impressum</a>
+      <a className="after:bg-cyan-600 after:rounded-3xl hover:text-cyan-600" href="/impressum">Impressum</a>
       <span>© Kevin Rohlf {new Date().getFullYear()}</span>
-      <a href="/datenschutz">Datenschutz</a>
+      <a className="after:bg-cyan-600 after:rounded-3xl hover:text-cyan-600" href="/datenschutz">Datenschutz</a>
     </footer>
   </div>
     

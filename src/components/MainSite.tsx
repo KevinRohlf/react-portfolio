@@ -23,15 +23,13 @@ function MainSite() {
       ) {
         showfieldElement.scrollLeft = 0;
       } else {
-        showfieldElement.scrollLeft += 500;
+        showfieldElement.scrollLeft += 400;
       }
-      console.log(showfieldElement.scrollLeft);
     } else if (showfieldElement) {
       if (showfieldElement.scrollLeft <= 0) {
         showfieldElement.scrollLeft = showfieldElement.scrollWidth;
       } else {
-        showfieldElement.scrollLeft -= 500;
-        console.log(showfieldElement.scrollLeft);
+        showfieldElement.scrollLeft -= 400;
       }
     }
   };
@@ -56,6 +54,22 @@ function MainSite() {
     }
   }, [selection, activeTabElementRef, containerRef]);
 
+  const Skills = () => {
+    return (
+      <div className="flex flex-wrap gap-5 justify-center items-center h-full">
+        {CATEGORYS.Skills.map((skill) => (
+          <div
+            key={skill.title}
+            className="flex w-28 flex-col items-center hover:animate-pulse"
+          >
+            <img src={skill.imgSrc} alt={skill.title} className="rounded-xl" />
+            <span>{skill.title}</span>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const Projects = () => {
     return (
       <div>
@@ -78,25 +92,23 @@ function MainSite() {
 
         <div
           ref={showfield}
-          className=" gap-14 flex items-center w-full relative overflow-hidden snap-x scroll-smooth"
+          className=" flex justify-between items-center w-full relative overflow-hidden snap-x scroll-smooth"
         >
-          {CATEGORYS.Projekte.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="gap-5 flex items-center justify-center relative flex-col min-w-96 snap-center"
-              >
-                <img src="https://via.placeholder.com/150" alt="" />
-                <h2 className="text-xl">{item.title}</h2>
-                <p className="text-sm text-pretty">{item.description}</p>
-                <div className="flex gap-5 text-sm w-full justify-center">
-                  {item.technology.map((tech, index) => (
-                    <span key={index}>{tech}</span>
-                  ))}
-                </div>
+          {CATEGORYS.Projekte.map((item) => (
+            <div
+              key={item.title}
+              className="gap-5 flex items-center justify-center relative flex-col min-w-[22.7rem] snap-center"
+            >
+              <img src={item.imgSrc} alt={item.title} />
+              <h2 className="text-xl">{item.title}</h2>
+              <p className="text-sm text-pretty">{item.description}</p>
+              <div className="flex gap-5 text-sm w-full justify-center">
+                {item.technology.map((tech, index) => (
+                  <span key={index}>{tech}</span>
+                ))}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -178,7 +190,7 @@ function MainSite() {
         </nav>
         <Card className="w-4/5 min-h-96 relative">
           {selection === "Projekte" && <Projects />}
-          {selection === "Skills" && <div>Skills</div>}
+          {selection === "Skills" && <Skills />}
           {selection === "Berufserfahrung" && <div>Berufserfahrung</div>}
           {selection === "Ausbildung" && <div>Ausbildung</div>}
         </Card>
