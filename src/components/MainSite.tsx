@@ -116,19 +116,19 @@ function MainSite() {
 
   return (
     <>
-      <div className="w-1/2 flex flex-col gap-10">
-        <div className="w-full flex items-center gap-16 relative">
+      <div className="xl:w-1/2 flex flex-col gap-10 mb-10 xl:mb-0">
+        <div className="w-full flex items-center gap-10 relative justify-center xl:justify-start flex-col xl:flex-row">
           <img
             className="rounded-full object-cover w-60 h-60 clip"
             src={avatarImg}
             alt="ProfilBild"
           />
-          <div className="flex flex-col">
-            <div>
+          <div className="flex flex-col gap-5">
+            <div className="text-center xl:text-start">
               <h1 className="text-4xl">Kevin Rohlf</h1>
               <p className="text-2xl">Frontend Entwickler</p>
             </div>
-            <div className="flex gap-5 absolute bottom-0">
+            <div className="flex justify-center gap-5 xl:absolute xl:bottom-0 ">
               <SocialBtn
                 href="https://github.com/KevinRohlf"
                 imgSrc={<GithubImg />}
@@ -157,8 +157,8 @@ function MainSite() {
           </div>
         </Card>
       </div>
-      <div className="w-1/2 flex flex-col items-center gap-10 relative">
-        <nav className="w-4/5 bg-secondary h-12 rounded-3xl flex justify-center items-center shadow-md">
+      <div className="xl:w-1/2 flex flex-col items-center gap-10 relative">
+        <nav className="min-w-4/5 bg-secondary px-4 h-12 rounded-3xl flex justify-center items-center shadow-md">
           {DATA.map((item, index) => (
             <TabBtn
               datatab={item}
@@ -173,7 +173,7 @@ function MainSite() {
         </nav>
         <nav
           aria-hidden
-          className="w-4/5 bg-primary h-10 mt-1 rounded-3xl flex justify-center items-center shadow-md clip-path-container"
+          className="min-w-4/5 bg-primary h-10 mt-1 rounded-3xl flex justify-center items-center shadow-md clip-path-container"
           ref={containerRef}
         >
           {DATA.map((item, index) => (
@@ -188,7 +188,7 @@ function MainSite() {
             </TabBtn>
           ))}
         </nav>
-        <Card className="w-4/5 min-h-96 relative">
+        <Card className="w-full xl:w-4/5 min-h-96 relative">
           {selection === "Projekte" && <Projects />}
           {selection === "Skills" && <Skills />}
           {selection === "Berufserfahrung" && <div>Berufserfahrung</div>}
