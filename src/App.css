@@ -29,3 +29,7 @@
     width: 100%;
     left: 0;
   }
+
+  .h-full-footer {
+    min-height: calc(100dvh - 5rem - 2.5rem);
+  }

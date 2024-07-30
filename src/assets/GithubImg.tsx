@@ -1,6 +1,6 @@
 function GithubImg() {
   return (
-    <svg className="[&>path]:hover:fill-cyan-600 transition-colors"
+    <svg className="[&>path]:hover:fill-accent transition-colors"
       width="42"
       height="41"
       viewBox="0 0 42 41"

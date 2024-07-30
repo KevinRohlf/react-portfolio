@@ -1,5 +1,5 @@
-import { ElementRef, useEffect, useRef, useState } from "react";
-import { CATEGORYS, DATA } from "../data";
+import { ElementRef, useRef, useState } from "react";
+import { CATEGORIES, DATA } from "../data";
 import SocialBtn from "./SocialBtn";
 import GithubImg from "../assets/GithubImg";
 import LinkedInImg from "../assets/LinkedInImg";
@@ -7,12 +7,16 @@ import MailImg from "../assets/MailImg";
 import Card from "./Card";
 import TabBtn from "./TabBtn";
 import avatarImg from "../assets/avatar.jpg";
+import { Cursor, Typewriter } from "react-simple-typewriter";
+import CVList from "./CVList";
+import { Highlight } from "./Highlight";
 
 function MainSite() {
   const [selection, setSelection] = useState("Projekte");
   const containerRef = useRef<ElementRef<"nav">>(null);
   const activeTabElementRef = useRef(null);
   const showfield = useRef<ElementRef<"div">>(null);
+  const rightCard = useRef<ElementRef<"div">>(null);
 
   const next = (next: boolean) => {
     const showfieldElement = showfield.current;
@@ -23,46 +27,36 @@ function MainSite() {
       ) {
         showfieldElement.scrollLeft = 0;
       } else {
-        showfieldElement.scrollLeft += 400;
+        showfieldElement.scrollLeft += rightCard.current?.clientWidth
+          ? rightCard.current.clientWidth - 80
+          : 400;
       }
     } else if (showfieldElement) {
       if (showfieldElement.scrollLeft <= 0) {
         showfieldElement.scrollLeft = showfieldElement.scrollWidth;
       } else {
-        showfieldElement.scrollLeft -= 400;
+        showfieldElement.scrollLeft -= rightCard.current?.clientWidth
+          ? rightCard.current.clientWidth - 80
+          : 400;
       }
     }
   };
 
-  useEffect(() => {
-    const container = containerRef.current;
-
-    if (selection && container) {
-      const activeTabElement = activeTabElementRef.current;
-
-      if (activeTabElement) {
-        const { offsetLeft, offsetWidth } = activeTabElement;
-
-        const clipLeft = offsetLeft;
-        const clipRight = offsetLeft + offsetWidth;
-        container.style.clipPath = `inset(0 ${Number(
-          100 - (clipRight / container.offsetWidth) * 100
-        ).toFixed()}% 0 ${Number(
-          (clipLeft / container.offsetWidth) * 100
-        ).toFixed()}% round 9999px)`;
-      }
-    }
-  }, [selection, activeTabElementRef, containerRef]);
+  const TypewriterText = ["Frontend Entwickler", "Geiler Typ", "Macher"];
 
   const Skills = () => {
     return (
       <div className="flex flex-wrap gap-5 justify-center items-center h-full">
-        {CATEGORYS.Skills.map((skill) => (
+        {CATEGORIES.Skills.map((skill) => (
           <div
             key={skill.title}
             className="flex w-28 flex-col items-center hover:animate-pulse"
           >
-            <img src={skill.imgSrc} alt={skill.title} className="rounded-xl" />
+            <img
+              src={skill.imgSrc}
+              alt={skill.title}
+              className="rounded-xl h-12 w-12"
+            />
             <span>{skill.title}</span>
           </div>
         ))}
@@ -92,12 +86,17 @@ function MainSite() {
 
         <div
           ref={showfield}
-          className=" flex justify-between items-center w-full relative overflow-hidden snap-x scroll-smooth"
+          className="flex justify-between max-w-full items-center w-full relative snap-x overflow-hidden scroll-smooth"
         >
-          {CATEGORYS.Projekte.map((item) => (
+          {CATEGORIES.Projekte.map((item) => (
             <div
               key={item.title}
-              className="gap-5 flex items-center justify-center relative flex-col min-w-[22.7rem] snap-center"
+              className={`gap-5 flex items-center justify-center relative flex-col snap-center`}
+              style={{
+                minWidth: rightCard.current?.clientWidth
+                  ? rightCard.current.clientWidth - 80 + "px"
+                  : "100%",
+              }}
             >
               <img src={item.imgSrc} alt={item.title} />
               <h2 className="text-xl">{item.title}</h2>
@@ -106,6 +105,18 @@ function MainSite() {
                 {item.technology.map((tech, index) => (
                   <span key={index}>{tech}</span>
                 ))}
+              </div>
+              <div className="flex w-full justify-evenly">
+                <a href={item.github}>
+                  <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
+                    Github
+                  </button>
+                </a>
+                <a href={"/" + item.title}>
+                  <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
+                    Live
+                  </button>
+                </a>
               </div>
             </div>
           ))}
@@ -116,7 +127,7 @@ function MainSite() {
 
   return (
     <>
-      <div className="xl:w-1/2 flex flex-col gap-10 mb-10 xl:mb-0">
+      <div className="xl:w-1/2 flex flex-col gap-10 xl:mb-0">
         <div className="w-full flex items-center gap-10 relative justify-center xl:justify-start flex-col xl:flex-row">
           <img
             className="rounded-full object-cover w-60 h-60 clip"
@@ -126,7 +137,19 @@ function MainSite() {
           <div className="flex flex-col gap-5">
             <div className="text-center xl:text-start">
               <h1 className="text-4xl">Kevin Rohlf</h1>
-              <p className="text-2xl">Frontend Entwickler</p>
+              <div className="flex text-2xl">
+                <p className="drop-shadow-md text-2xl bg-gradient-to-r from-accent to-third text-transparent bg-clip-text">
+                  <Typewriter
+                    words={TypewriterText}
+                    loop={false}
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                  />
+                </p>
+                <p>
+                  <Cursor />
+                </p>
+              </div>
             </div>
             <div className="flex justify-center gap-5 xl:absolute xl:bottom-0 ">
               <SocialBtn
@@ -157,42 +180,42 @@ function MainSite() {
           </div>
         </Card>
       </div>
-      <div className="xl:w-1/2 flex flex-col items-center gap-10 relative">
-        <nav className="min-w-4/5 bg-secondary px-4 h-12 rounded-3xl flex justify-center items-center shadow-md">
+      <div className="xl:w-1/2 flex flex-col items-center gap-10 relative xl:max-w-[540px]">
+        <nav ref={containerRef} className="min-w-full bg-secondary rounded-3xl relative shadow-md">
+          <div className="flex justify-around flex-wrap items-center relative z-10 isolate px-4 min-h-12 ">
           {DATA.map((item, index) => (
             <TabBtn
               datatab={item}
               refo={selection === item ? activeTabElementRef : null}
               key={index}
-              active={false}
+              active={selection === item}
               onClick={() => setSelection(item)}
             >
               {item}
             </TabBtn>
           ))}
+          </div>
+          <Highlight activeSection={selection} listRef={containerRef} />
         </nav>
-        <nav
-          aria-hidden
-          className="min-w-4/5 bg-primary h-10 mt-1 rounded-3xl flex justify-center items-center shadow-md clip-path-container"
-          ref={containerRef}
-        >
-          {DATA.map((item, index) => (
-            <TabBtn
-              datatab={item}
-              active={true}
-              refo={selection === item ? activeTabElementRef : null}
-              key={index}
-              onClick={() => setSelection(item)}
-            >
-              {item}
-            </TabBtn>
-          ))}
-        </nav>
-        <Card className="w-full xl:w-4/5 min-h-96 relative">
+        
+        <Card className="w-full min-h-96 flex flex-col justify-center" refo={rightCard}>
+          
           {selection === "Projekte" && <Projects />}
           {selection === "Skills" && <Skills />}
-          {selection === "Berufserfahrung" && <div>Berufserfahrung</div>}
-          {selection === "Ausbildung" && <div>Ausbildung</div>}
+          {selection === "Berufserfahrung" && (
+            <div className="flex flex-col gap-10">
+              {CATEGORIES.Berufserfahrung.map((item) => (
+                <CVList key={item.title} {...item} />
+              ))}
+            </div>
+          )}
+          {selection === "Ausbildung" && (
+            <div className="flex flex-col gap-10">
+              {CATEGORIES.Ausbildung.map((item) => (
+                <CVList key={item.title} {...item} />
+              ))}
+            </div>
+          )}
         </Card>
       </div>
     </>

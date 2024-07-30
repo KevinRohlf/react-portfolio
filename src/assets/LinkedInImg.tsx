@@ -1,6 +1,6 @@
 function LinkedInImg() {
   return (
-    <svg className="[&>path]:hover:fill-cyan-600 transition-colors"
+    <svg className="[&>path]:hover:fill-accent transition-colors"
       width="40"
       height="40"
       viewBox="0 0 40 40"

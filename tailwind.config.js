@@ -10,6 +10,7 @@ export default {
         primary: "#171E24",
         secondary: "#242E3A",
         third: "#FFFFFD",
+        accent: "#42C4FF"
       }
     },
   },
