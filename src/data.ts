@@ -5,8 +5,22 @@ import AngularImg from "./assets/angular.svg";
 import ReactImg from "./assets/react.svg";
 import TypeScriptImg from "./assets/typescript.svg";
 import TailwindCSSImg from "./assets/tailwindcss.svg";
+import EplImg from "./assets/epl.png";
+import PokedexImg from "./assets/pokedex.png";
+import JoinImg from "./assets/join.png";
 
-export const DATA = ["Projekte", "Skills", "Berufserfahrung", "Ausbildung", "Kontakt"];
+export const DATA = ["Projekte", "Skills", "Berufserfahrung", "Ausbildung"];
+
+export const aboutMe = `Moin! Ich bin ein 28 Jahre junger Frontend-Entwickler und
+            Quereinsteiger. Ursprünglich Elektriker, habe ich meine Leidenschaft
+            für die Programmierung entdeckt und mich professionell auf die
+            Frontend-Entwicklung spezialisiert. Schon seit meiner Kindheit
+            träume ich davon, digitale Welten zu erschaffen. Mein technischer
+            Hintergrund hilft mir, kreative und präzise Lösungen zu entwickeln.
+            Ich arbeite gerne mit den neuesten Technologien und gestalte
+            benutzerfreundliche, ansprechende Webanwendungen. In meiner Freizeit
+            bilde ich mich weiter und suche stets neue Herausforderungen. Ich
+            freue mich darauf, mit Ihnen in Kontakt zutreten.`
 
 export const CATEGORIES = {
   Projekte: [
@@ -14,22 +28,22 @@ export const CATEGORIES = {
       title: "Pokedex",
       description: "Ein simpler Pokedex, der seine Daten von der PokeAPI bezieht",
       technology: ["Angular", "TypeScript", "SCSS", "RestAPI"],
-      imgSrc: "https://via.placeholder.com/150",
-      github: "",
+      imgSrc: PokedexImg,
+      github: "https://github.com/KevinRohlf/Angular-Pokedex",
     },
     {
-      title: "El pollo loco",
-      description: "Ein simples jump and run Spiel",
+      title: "El Pollo Loco",
+      description: "Ein einfaches Jump-and-Run-Spiel basierend auf einem objektorientierten Ansatz. Hilf Pepe, Münzen und Salsaflaschen zu finden, um gegen das große Huhn zu kämpfen.",
       technology: ["JavaScript", "CSS", "OOP"],
-      imgSrc: "https://via.placeholder.com/150",
-      github: "",
+      imgSrc: EplImg,
+      github: "https://github.com/KevinRohlf/El-Pollo-Loco",
     },
     {
       title: "Join",
-      description: "Das ist das dritte Projekt",
-      technology: ["React", "TypeScript", "TailwindCSS"],
-      imgSrc: "https://via.placeholder.com/150",
-      github: "",
+      description: "Ein Aufgabenmanager inspiriert vom Kanban-System: Erstellen und Organisieren von Aufgaben mit Drag-and-Drop-Funktionen sowie die Zuweisung von Benutzern und Kategorien.",
+      technology: ["Javascript", "HTML", "CSS"],
+      imgSrc: JoinImg,
+      github: "https://github.com/KevinRohlf/join",
     },
   ],
   Skills: [

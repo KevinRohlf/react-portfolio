@@ -1,5 +1,5 @@
 import { ElementRef, useRef, useState } from "react";
-import { CATEGORIES, DATA } from "../data";
+import { aboutMe, CATEGORIES, DATA } from "../data";
 import SocialBtn from "./SocialBtn";
 import GithubImg from "../assets/GithubImg";
 import LinkedInImg from "../assets/LinkedInImg";
@@ -10,120 +10,15 @@ import avatarImg from "../assets/avatar.jpg";
 import { Cursor, Typewriter } from "react-simple-typewriter";
 import CVList from "./CVList";
 import { Highlight } from "./Highlight";
+import Projects from "./Projects";
+import Skills from "./Skills";
 
 function MainSite() {
   const [selection, setSelection] = useState("Projekte");
   const containerRef = useRef<ElementRef<"nav">>(null);
   const activeTabElementRef = useRef(null);
-  const showfield = useRef<ElementRef<"div">>(null);
   const rightCard = useRef<ElementRef<"div">>(null);
-
-  const next = (next: boolean) => {
-    const showfieldElement = showfield.current;
-    if (showfieldElement && next) {
-      if (
-        showfieldElement.scrollLeft + showfieldElement.clientWidth >=
-        showfieldElement.scrollWidth
-      ) {
-        showfieldElement.scrollLeft = 0;
-      } else {
-        showfieldElement.scrollLeft += rightCard.current?.clientWidth
-          ? rightCard.current.clientWidth - 80
-          : 400;
-      }
-    } else if (showfieldElement) {
-      if (showfieldElement.scrollLeft <= 0) {
-        showfieldElement.scrollLeft = showfieldElement.scrollWidth;
-      } else {
-        showfieldElement.scrollLeft -= rightCard.current?.clientWidth
-          ? rightCard.current.clientWidth - 80
-          : 400;
-      }
-    }
-  };
-
   const TypewriterText = ["Frontend Entwickler", "Geiler Typ", "Macher"];
-
-  const Skills = () => {
-    return (
-      <div className="flex flex-wrap gap-5 justify-center items-center h-full">
-        {CATEGORIES.Skills.map((skill) => (
-          <div
-            key={skill.title}
-            className="flex w-28 flex-col items-center hover:animate-pulse"
-          >
-            <img
-              src={skill.imgSrc}
-              alt={skill.title}
-              className="rounded-xl h-12 w-12"
-            />
-            <span>{skill.title}</span>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  const Projects = () => {
-    return (
-      <div>
-        <div
-          onClick={() => {
-            next(false);
-          }}
-          className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center left-3 top-1/2"
-        >
-          {"<"}
-        </div>
-        <div
-          onClick={() => {
-            next(true);
-          }}
-          className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center right-3 top-1/2"
-        >
-          {">"}
-        </div>
-
-        <div
-          ref={showfield}
-          className="flex justify-between max-w-full items-center w-full relative snap-x overflow-hidden scroll-smooth"
-        >
-          {CATEGORIES.Projekte.map((item) => (
-            <div
-              key={item.title}
-              className={`gap-5 flex items-center justify-center relative flex-col snap-center`}
-              style={{
-                minWidth: rightCard.current?.clientWidth
-                  ? rightCard.current.clientWidth - 80 + "px"
-                  : "100%",
-              }}
-            >
-              <img src={item.imgSrc} alt={item.title} />
-              <h2 className="text-xl">{item.title}</h2>
-              <p className="text-sm text-pretty">{item.description}</p>
-              <div className="flex gap-5 text-sm w-full justify-center">
-                {item.technology.map((tech, index) => (
-                  <span key={index}>{tech}</span>
-                ))}
-              </div>
-              <div className="flex w-full justify-evenly">
-                <a href={item.github}>
-                  <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
-                    Github
-                  </button>
-                </a>
-                <a href={"/" + item.title}>
-                  <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
-                    Live
-                  </button>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
 
   return (
     <>
@@ -167,22 +62,13 @@ function MainSite() {
         <Card>
           <h2 className="text-2xl">Über mich</h2>
           <div className="mt-5 text-sm text-pretty">
-            Moin! Ich bin ein 28 Jahre junger Frontend-Entwickler und
-            Quereinsteiger. Ursprünglich Elektriker, habe ich meine Leidenschaft
-            für die Programmierung entdeckt und mich professionell auf die
-            Frontend-Entwicklung spezialisiert. Schon seit meiner Kindheit
-            träume ich davon, digitale Welten zu erschaffen. Mein technischer
-            Hintergrund hilft mir, kreative und präzise Lösungen zu entwickeln.
-            Ich arbeite gerne mit den neuesten Technologien und gestalte
-            benutzerfreundliche, ansprechende Webanwendungen. In meiner Freizeit
-            bilde ich mich weiter und suche stets neue Herausforderungen. Ich
-            freue mich darauf, mit Ihnen in Kontakt zutreten.
+            { aboutMe }
           </div>
         </Card>
       </div>
       <div className="xl:w-1/2 flex flex-col items-center gap-10 relative xl:max-w-[540px]">
-        <nav ref={containerRef} className="min-w-full bg-secondary rounded-3xl relative shadow-md">
-          <div className="flex justify-around flex-wrap items-center relative z-10 isolate px-4 min-h-12 ">
+        <nav ref={containerRef} className="min-w-full bg-secondary rounded-3xl relative shadow-md py-2">
+          <div className="flex justify-around flex-wrap items-center relative z-10 isolate px-4 min-h-12">
           {DATA.map((item, index) => (
             <TabBtn
               datatab={item}
@@ -200,7 +86,7 @@ function MainSite() {
         
         <Card className="w-full min-h-96 flex flex-col justify-center" refo={rightCard}>
           
-          {selection === "Projekte" && <Projects />}
+          {selection === "Projekte" && <Projects rightCard={rightCard} />}
           {selection === "Skills" && <Skills />}
           {selection === "Berufserfahrung" && (
             <div className="flex flex-col gap-10">

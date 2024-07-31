@@ -82,7 +82,7 @@ const Highlight = ({ listRef, activeSection }: { listRef: React.RefObject<HTMLEl
     }, [activePathname]);
   
     return (
-      <span ref={ref} className="absolute top-0 left-0 rounded-full bg-primary" />
+      <span ref={ref} className="absolute mt-2 top-0 left-0 rounded-full bg-primary" />
     );
   };
   
