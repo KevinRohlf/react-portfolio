@@ -61,46 +61,53 @@ function MainSite() {
         </div>
         <Card>
           <h2 className="text-2xl">Über mich</h2>
-          <div className="mt-5 text-sm text-pretty">
-            { aboutMe }
-          </div>
+          <div className="mt-5 text-sm text-pretty">{aboutMe}</div>
         </Card>
       </div>
       <div className="xl:w-1/2 flex flex-col items-center gap-10 relative xl:max-w-[540px]">
-        <nav ref={containerRef} className="min-w-full bg-secondary rounded-3xl relative shadow-md py-2">
+        <nav
+          ref={containerRef}
+          className="min-w-full bg-secondary rounded-3xl relative shadow-md py-2"
+        >
           <div className="flex justify-around flex-wrap items-center relative z-10 isolate px-4 min-h-12">
-          {DATA.map((item, index) => (
-            <TabBtn
-              datatab={item}
-              refo={selection === item ? activeTabElementRef : null}
-              key={index}
-              active={selection === item}
-              onClick={() => setSelection(item)}
-            >
-              {item}
-            </TabBtn>
-          ))}
+            {DATA.map((item, index) => (
+              <TabBtn
+                datatab={item}
+                refo={selection === item ? activeTabElementRef : null}
+                key={index}
+                active={selection === item}
+                onClick={() => setSelection(item)}
+              >
+                {item}
+              </TabBtn>
+            ))}
           </div>
           <Highlight activeSection={selection} listRef={containerRef} />
         </nav>
-        
-        <Card className="w-full min-h-96 flex flex-col justify-center" refo={rightCard}>
-          
+
+        <Card
+          className="w-full min-h-96 flex flex-col justify-center"
+          refo={rightCard}
+        >
           {selection === "Projekte" && <Projects rightCard={rightCard} />}
           {selection === "Skills" && <Skills />}
           {selection === "Berufserfahrung" && (
-            <div className="flex flex-col gap-10">
-              {CATEGORIES.Berufserfahrung.map((item) => (
-                <CVList key={item.title} {...item} />
-              ))}
+            <div className="flex before:bg-primary before:min-h-full before:min-w-2 before:rounded-xl gap-10 relative">
+              <div className="flex flex-col gap-10">
+                {CATEGORIES.Berufserfahrung.map((item) => (
+                  <CVList key={item.title} {...item} />
+                ))}
+              </div>
             </div>
           )}
           {selection === "Ausbildung" && (
+            <div className="flex before:bg-primary before:min-h-full before:min-w-2 before:rounded-xl gap-10 relative">
             <div className="flex flex-col gap-10">
               {CATEGORIES.Ausbildung.map((item) => (
                 <CVList key={item.title} {...item} />
               ))}
             </div>
+          </div>
           )}
         </Card>
       </div>
