@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Arrow from "../assets/Arrow";
 import Card from "./Card";
 
@@ -5,11 +6,11 @@ function DataProtection() {
   return (
     <div>
       <Card>
-      <a className="pb-2" href="/">
+      <Link className="pb-2" to="/">
         <div className="bg-primary w-10 h-10 rounded-full flex justify-center items-center">
           <Arrow />
         </div>
-        </a>
+        </Link>
         <h1 className="mt-5">Datenschutz&shy;erkl&auml;rung</h1>
         <h2>1. Datenschutz auf einen Blick</h2>
         <h3>Allgemeine Hinweise</h3>{" "}
