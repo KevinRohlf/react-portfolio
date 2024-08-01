@@ -11,36 +11,33 @@ import JoinImg from "./assets/join.png";
 
 export const DATA = ["Projekte", "Skills", "Berufserfahrung", "Ausbildung"];
 
-export const aboutMe = `Moin! Ich bin ein 28 Jahre junger Frontend-Entwickler und
-            Quereinsteiger. Ursprünglich Elektriker, habe ich meine Leidenschaft
-            für die Programmierung entdeckt und mich professionell auf die
-            Frontend-Entwicklung spezialisiert. Schon seit meiner Kindheit
-            träume ich davon, digitale Welten zu erschaffen. Mein technischer
-            Hintergrund hilft mir, kreative und präzise Lösungen zu entwickeln.
-            Ich arbeite gerne mit den neuesten Technologien und gestalte
-            benutzerfreundliche, ansprechende Webanwendungen. In meiner Freizeit
-            bilde ich mich weiter und suche stets neue Herausforderungen. Ich
-            freue mich darauf, mit Ihnen in Kontakt zutreten.`
+export const ABOUTME = `Moin! 
+Ich bin ein leidenschaftlicher Frontend-Entwickler und Quereinsteiger. Ursprünglich habe ich eine Ausbildung als Elektriker abgeschlossen, doch meine wahre Leidenschaft galt schon immer dem Programmieren. Seit meiner Kindheit träume ich davon, digitale Welten zu erschaffen und innovative Lösungen zu entwickeln. Durch meinen technischen Hintergrund bringe ich ein besonderes Verständnis für präzise und effiziente Arbeitsweisen mit. Jetzt habe ich meinen Traum verwirklicht und mich auf die Frontend-Entwicklung spezialisiert, wobei ich stets danach strebe, benutzerfreundliche und ansprechende Webanwendungen zu gestalten. Ich freue mich darauf, meine Reise fortzusetzen und neue Herausforderungen anzunehmen.`;
+
+export const TYPEWRITERTEXT = ["Frontend Entwickler", "Code Enthusiast", "Problem Löser"];
 
 export const CATEGORIES = {
   Projekte: [
     {
       title: "Pokedex",
-      description: "Ein simpler Pokedex, der seine Daten von der PokeAPI bezieht",
+      description:
+        "Ein simpler Pokedex, der seine Daten von der PokeAPI bezieht",
       technology: ["Angular", "TypeScript", "SCSS", "RestAPI"],
       imgSrc: PokedexImg,
       github: "https://github.com/KevinRohlf/Angular-Pokedex",
     },
     {
       title: "El Pollo Loco",
-      description: "Ein einfaches Jump-and-Run-Spiel basierend auf einem objektorientierten Ansatz. Hilf Pepe, Münzen und Salsaflaschen zu finden, um gegen das große Huhn zu kämpfen.",
+      description:
+        "Ein einfaches Jump-and-Run-Spiel basierend auf einem objektorientierten Ansatz. Hilf Pepe, Münzen und Salsaflaschen zu finden, um gegen das große Huhn zu kämpfen.",
       technology: ["JavaScript", "CSS", "OOP"],
       imgSrc: EplImg,
       github: "https://github.com/KevinRohlf/El-Pollo-Loco",
     },
     {
       title: "Join",
-      description: "Ein Aufgabenmanager inspiriert vom Kanban-System: Erstellen und Organisieren von Aufgaben mit Drag-and-Drop-Funktionen sowie die Zuweisung von Benutzern und Kategorien.",
+      description:
+        "Ein Aufgabenmanager inspiriert vom Kanban-System: Erstellen und Organisieren von Aufgaben mit Drag-and-Drop-Funktionen sowie die Zuweisung von Benutzern und Kategorien.",
       technology: ["Javascript", "HTML", "CSS"],
       imgSrc: JoinImg,
       github: "https://github.com/KevinRohlf/join",
@@ -80,13 +77,15 @@ export const CATEGORIES = {
     {
       company: "publicplan GmbH",
       title: "Formular Entwickler",
-      description: "Bei der publicplan. GmbH geht es darum, die öffentliche Verwaltung im Sinne des OZG/OZG 2.0 zu digitalisieren. Dazu werden Formulare für Bürger digital als PaaS zur Verfügung gestellt.",
+      description:
+        "Bei der publicplan. GmbH geht es darum, die öffentliche Verwaltung im Sinne des OZG/OZG 2.0 zu digitalisieren. Dazu werden Formulare für Bürger digital als PaaS zur Verfügung gestellt.",
       dates: "September 2023 - August 2024",
     },
     {
       company: "DB Netz AG",
       title: "Elektriker und Triebfahrzeugführer",
-      description: "erste Berufserfahrung",
+      description:
+        "Instandhaltung der Oberleitungsanlage und Führen von Nebenfahrzeugen",
       dates: "September 2015 - August 2023",
     },
   ],
@@ -94,13 +93,15 @@ export const CATEGORIES = {
     {
       company: "Developer Academy",
       title: "Qualifizierung zum Frontend-Entwickler",
-      description: "Die Developer Akademie bildet Quereinsteiger zu Software Entwicklern aus.",
+      description:
+        "Die Developer Akademie bildet Quereinsteiger zu Software Entwicklern aus.",
       dates: "Dezember 2022 - Juni 2023",
     },
     {
       company: "DB Netz AG",
       title: "Ausbildung zum Industrieelektriker",
-      description: "Das ist die erste Ausbildung",
+      description:
+        "Installation und Inbetriebnahme von elektrischen Systemen und Anlagen, Wartung und Reparatur von Produktions- und Betriebsanlagen, Überprüfung und Optimierung elektrischer Systeme, Diagnose und Behebung technischer Störungen.",
       dates: "September 2013 - Juli 2015",
     },
   ],

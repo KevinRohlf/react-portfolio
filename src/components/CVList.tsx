@@ -10,7 +10,7 @@ function CVList({
   dates: string;
 }) {
   return (
-    <div className="flex items-center before:absolute before:left-1 before:rounded-xl before:w-4 before:h-2 before:bg-primary">
+    <div className="flex items-center before:absolute before:-left-1 before:rounded-xl before:w-4 before:h-4 before:bg-primary">
       <div className="flex flex-col">
         <h2 className="text-xl">{company}</h2>
         <p className="text-sm">{title}</p>

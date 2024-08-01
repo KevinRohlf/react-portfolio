@@ -1,5 +1,5 @@
 import { ElementRef, useRef, useState } from "react";
-import { aboutMe, CATEGORIES, DATA } from "../data";
+import { ABOUTME, CATEGORIES, DATA, TYPEWRITERTEXT } from "../data";
 import SocialBtn from "./SocialBtn";
 import GithubImg from "../assets/GithubImg";
 import LinkedInImg from "../assets/LinkedInImg";
@@ -18,7 +18,6 @@ function MainSite() {
   const containerRef = useRef<ElementRef<"nav">>(null);
   const activeTabElementRef = useRef(null);
   const rightCard = useRef<ElementRef<"div">>(null);
-  const TypewriterText = ["Frontend Entwickler", "Geiler Typ", "Macher"];
 
   return (
     <>
@@ -35,7 +34,7 @@ function MainSite() {
               <div className="flex text-2xl">
                 <p className="drop-shadow-md text-2xl bg-gradient-to-r from-accent to-third text-transparent bg-clip-text">
                   <Typewriter
-                    words={TypewriterText}
+                    words={TYPEWRITERTEXT}
                     loop={false}
                     typeSpeed={70}
                     deleteSpeed={50}
@@ -61,7 +60,7 @@ function MainSite() {
         </div>
         <Card>
           <h2 className="text-2xl">Über mich</h2>
-          <div className="mt-5 text-sm text-pretty">{aboutMe}</div>
+          <div className="mt-5 text-sm text-pretty">{ABOUTME}</div>
         </Card>
       </div>
       <div className="xl:w-1/2 flex flex-col items-center gap-10 relative xl:max-w-[540px]">
