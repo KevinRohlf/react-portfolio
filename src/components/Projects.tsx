@@ -1,5 +1,6 @@
 import { ElementRef, useRef, RefObject } from "react";
 import { CATEGORIES } from "../data";
+import Arrow from "../assets/Arrow";
 
 interface ProjectsProps {
   rightCard: RefObject<HTMLDivElement>;
@@ -38,17 +39,17 @@ function Projects({ rightCard }: ProjectsProps) {
         onClick={() => {
           next(false);
         }}
-        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center left-3 top-1/2"
+        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center left-3 top-1/2 z-10"
       >
-        {"<"}
+        <Arrow />
       </div>
       <div
         onClick={() => {
           next(true);
         }}
-        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center right-3 top-1/2"
+        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center right-3 top-1/2 z-10"
       >
-        {">"}
+        <Arrow className="rotate-180" />
       </div>
 
       <div

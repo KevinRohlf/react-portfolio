@@ -1,34 +1,42 @@
+import Arrow from "../assets/Arrow";
 import Card from "./Card";
 
 function Imprint() {
-    return ( 
-        
-          <div className=" flex flex-col gap-10">
-            <Card>
-                <a className="pb-2" href="/">{'<--'}</a>
-              <h2 className="text-2xl">Impressum</h2>
-              <div className="mt-5 text-sm text-pretty">
-                <h3>Angaben gemäß § 5 TMG:</h3>
-                <p>Kevin Rohlf</p>
-                <p>Heideweg 1</p>
-                <p>22397 Hamburg</p>
-                <h3>Kontakt:</h3>
-                <p>Telefon: 0176 12345678</p>
-                <p>E-Mail: kevin@rohlf.io</p>
-                <h3>Haftung für Inhalte</h3>
-                <p>
-                  Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
-                  Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
-                  verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-                  Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
-                  gespeicherte fremde Informationen zu überwachen oder nach
-                  Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
-                  hinweisen.
-                </p>
-              </div>
-            </Card>
-          </div>
-     );
+  return (
+    <div className=" w-full flex flex-col gap-10">
+      <Card >
+        <a className="pb-2" href="/">
+        <div className="bg-primary w-10 h-10 rounded-full flex justify-center items-center">
+          <Arrow />
+        </div>
+        </a>
+        <h1 className="mt-5 text-2xl pb-5">Impressum</h1>
+
+        <p>
+          Kevin Rohlf
+          <br />
+          Saselbergring 6<br />
+          22395 Hamburg
+        </p>
+
+        <h2>Kontakt</h2>
+        <p>
+          Telefon: <a href="tel:+4915161553487">
+            015161553487
+            </a>
+          <br />
+          E-Mail: <a href="mailto:kevin@rohlf.io">kevin@rohlf.io</a>
+        </p>
+
+        <p>
+          Quelle:{" "}
+          <a href="https://www.e-recht24.de/impressum-generator.html">
+            https://www.e-recht24.de/impressum-generator.html
+          </a>
+        </p>
+      </Card>
+    </div>
+  );
 }
 
 export default Imprint;
