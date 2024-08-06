@@ -1,30 +1,33 @@
 import { ElementRef, useRef, useState } from "react";
-import { ABOUTME, CATEGORIES, DATA, TYPEWRITERTEXT } from "../data";
-import SocialBtn from "./SocialBtn";
+import {
+  ABOUTME,
+  type Category,
+  DATA,
+  HTMLCONTENT,
+  TYPEWRITERTEXT,
+} from "../data";
+import SocialBtn from "../components/SocialBtn";
 import GithubImg from "../assets/GithubImg";
 import LinkedInImg from "../assets/LinkedInImg";
 import MailImg from "../assets/MailImg";
-import Card from "./Card";
-import TabBtn from "./TabBtn";
+import Card from "../components/Card";
+import TabBtn from "../components/TabBtn";
 import avatarImg from "../assets/avatar.jpg";
 import { Cursor, Typewriter } from "react-simple-typewriter";
-import CVList from "./CVList";
-import { Highlight } from "./Highlight";
-import Projects from "./Projects";
-import Skills from "./Skills";
+import { Highlight } from "../components/Highlight";
 
 function MainSite() {
-  const [selection, setSelection] = useState("Projekte");
+  const [selection, setSelection] = useState<Category>("Projekte");
   const containerRef = useRef<ElementRef<"nav">>(null);
   const activeTabElementRef = useRef(null);
   const rightCard = useRef<ElementRef<"div">>(null);
 
   return (
     <>
-      <div className="xl:w-1/2 flex flex-col gap-10 xl:mb-0">
-        <div className="w-full flex items-center gap-10 relative justify-center xl:justify-start flex-col xl:flex-row">
+      <div className="flex flex-col gap-10 xl:mb-0 xl:w-1/2">
+        <div className="relative flex w-full flex-col items-center justify-center gap-10 xl:flex-row xl:justify-start">
           <img
-            className="rounded-full object-cover w-60 h-60 clip"
+            className="clip h-60 w-60 rounded-full object-cover"
             src={avatarImg}
             alt="ProfilBild"
           />
@@ -32,7 +35,7 @@ function MainSite() {
             <div className="text-center xl:text-start">
               <h1 className="text-4xl">Kevin Rohlf</h1>
               <div className="flex text-2xl">
-                <p className="drop-shadow-md text-2xl bg-gradient-to-r from-accent to-third text-transparent bg-clip-text">
+                <p className="bg-gradient-to-r from-accent to-third bg-clip-text text-2xl text-transparent drop-shadow-md">
                   <Typewriter
                     words={TYPEWRITERTEXT}
                     loop={false}
@@ -45,7 +48,7 @@ function MainSite() {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center gap-5 xl:absolute xl:bottom-0 ">
+            <div className="flex justify-center gap-5 xl:absolute xl:bottom-0">
               <SocialBtn
                 href="https://github.com/KevinRohlf"
                 imgSrc={<GithubImg />}
@@ -60,18 +63,18 @@ function MainSite() {
         </div>
         <Card>
           <h2 className="text-2xl">Über mich</h2>
-          <div className="mt-5 text-sm text-pretty">{ABOUTME}</div>
+          <div className="mt-5 text-pretty text-sm">{ABOUTME}</div>
         </Card>
       </div>
-      <div className="xl:w-1/2 flex flex-col items-center gap-10 relative xl:max-w-[540px]">
+      <div className="relative flex flex-col items-center gap-10 xl:w-1/2 xl:max-w-[540px]">
         <nav
           ref={containerRef}
-          className="min-w-full bg-secondary rounded-3xl relative shadow-md py-2"
+          className="relative min-w-full rounded-3xl bg-secondary py-2 shadow-md"
         >
-          <div className="flex justify-around flex-wrap items-center relative z-10 isolate px-4 min-h-12">
+          <div className="relative isolate z-10 flex min-h-12 flex-wrap items-center justify-around px-4">
             {DATA.map((item, index) => (
               <TabBtn
-                datatab={item}
+                data-tab={item}
                 refo={selection === item ? activeTabElementRef : null}
                 key={index}
                 active={selection === item}
@@ -85,29 +88,10 @@ function MainSite() {
         </nav>
 
         <Card
-          className="w-full min-h-96 flex flex-col justify-center"
+          className="flex min-h-96 w-full flex-col justify-center"
           refo={rightCard}
         >
-          {selection === "Projekte" && <Projects rightCard={rightCard} />}
-          {selection === "Skills" && <Skills />}
-          {selection === "Berufserfahrung" && (
-            <div className="flex before:bg-primary before:min-h-full before:min-w-2 before:rounded-xl gap-10 relative">
-              <div className="flex flex-col gap-10">
-                {CATEGORIES.Berufserfahrung.map((item) => (
-                  <CVList key={item.title} {...item} />
-                ))}
-              </div>
-            </div>
-          )}
-          {selection === "Ausbildung" && (
-            <div className="flex before:bg-primary before:min-h-full before:min-w-2 before:rounded-xl gap-10 relative">
-            <div className="flex flex-col gap-10">
-              {CATEGORIES.Ausbildung.map((item) => (
-                <CVList key={item.title} {...item} />
-              ))}
-            </div>
-          </div>
-          )}
+          {selection && HTMLCONTENT[selection]}
         </Card>
       </div>
     </>

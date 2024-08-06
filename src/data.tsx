@@ -8,13 +8,27 @@ import TailwindCSSImg from "./assets/tailwindcss.svg";
 import EplImg from "./assets/epl.png";
 import PokedexImg from "./assets/pokedex.png";
 import JoinImg from "./assets/join.png";
+import Projects from "./components/Projects";
+import CVListItem from "./components/CVListItem";
+import Skills from "./components/Skills";
 
-export const DATA = ["Projekte", "Skills", "Berufserfahrung", "Ausbildung"];
+export const DATA = [
+  "Projekte",
+  "Skills",
+  "Berufserfahrung",
+  "Ausbildung",
+] as const;
+
+export type Category = (typeof DATA)[number];
 
 export const ABOUTME = `Moin! 
 Ich bin ein leidenschaftlicher Frontend-Entwickler und Quereinsteiger. Ursprünglich habe ich eine Ausbildung als Elektriker abgeschlossen, doch meine wahre Leidenschaft galt schon immer dem Programmieren. Seit meiner Kindheit träume ich davon, digitale Welten zu erschaffen und innovative Lösungen zu entwickeln. Durch meinen technischen Hintergrund bringe ich ein besonderes Verständnis für präzise und effiziente Arbeitsweisen mit. Jetzt habe ich meinen Traum verwirklicht und mich auf die Frontend-Entwicklung spezialisiert, wobei ich stets danach strebe, benutzerfreundliche und ansprechende Webanwendungen zu gestalten. Ich freue mich darauf, meine Reise fortzusetzen und neue Herausforderungen anzunehmen.`;
 
-export const TYPEWRITERTEXT = ["Frontend Entwickler", "Code Enthusiast", "Problem Löser"];
+export const TYPEWRITERTEXT = [
+  "Frontend Entwickler",
+  "Code Enthusiast",
+  "Problemlöser",
+];
 
 export const CATEGORIES = {
   Projekte: [
@@ -105,4 +119,27 @@ export const CATEGORIES = {
       dates: "September 2013 - Juli 2015",
     },
   ],
+};
+
+export const HTMLCONTENT = {
+  Ausbildung: (
+    <div className="relative flex gap-10 before:min-h-full before:min-w-2 before:rounded-xl before:bg-primary">
+      <div className="flex flex-col gap-10">
+        {CATEGORIES.Ausbildung.map((item) => (
+          <CVListItem key={item.title} {...item} />
+        ))}
+      </div>
+    </div>
+  ),
+  Berufserfahrung: (
+    <div className="relative flex gap-10 before:min-h-full before:min-w-2 before:rounded-xl before:bg-primary">
+      <div className="flex flex-col gap-10">
+        {CATEGORIES.Berufserfahrung.map((item) => (
+          <CVListItem key={item.title} {...item} />
+        ))}
+      </div>
+    </div>
+  ),
+  Projekte: <Projects />,
+  Skills: <Skills />,
 };

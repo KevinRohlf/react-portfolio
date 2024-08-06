@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import Arrow from "../assets/Arrow";
-import Card from "./Card";
+import Card from "../components/Card";
 
 function Imprint() {
   return (
-    <div className=" w-full flex flex-col gap-10">
-      <Card >
+    <div className="flex w-full flex-col gap-10">
+      <Card>
         <Link className="pb-2" to="/">
-        <div className="bg-primary w-10 h-10 rounded-full flex justify-center items-center">
-          <Arrow />
-        </div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+            <Arrow />
+          </div>
         </Link>
-        <h1 className="mt-5 text-2xl pb-5">Impressum</h1>
+        <h1 className="mt-5 pb-5 text-2xl">Impressum</h1>
 
         <p>
           Kevin Rohlf
@@ -22,9 +22,7 @@ function Imprint() {
 
         <h2>Kontakt</h2>
         <p>
-          Telefon: <a href="tel:+4915161553487">
-            015161553487
-            </a>
+          Telefon: <a href="tel:+4915161553487">015161553487</a>
           <br />
           E-Mail: <a href="mailto:kevin@rohlf.io">kevin@rohlf.io</a>
         </p>

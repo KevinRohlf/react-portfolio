@@ -1,13 +1,10 @@
-import { ElementRef, useRef, RefObject } from "react";
+import { ElementRef, useRef } from "react";
 import { CATEGORIES } from "../data";
 import Arrow from "../assets/Arrow";
 
-interface ProjectsProps {
-  rightCard: RefObject<HTMLDivElement>;
-}
-
-function Projects({ rightCard }: ProjectsProps) {
+function Projects() {
   const showfield = useRef<ElementRef<"div">>(null);
+  const content = useRef<ElementRef<"div">>(null);
 
   const next = (next: boolean) => {
     const showfieldElement = showfield.current;
@@ -18,16 +15,16 @@ function Projects({ rightCard }: ProjectsProps) {
       ) {
         showfieldElement.scrollLeft = 0;
       } else {
-        showfieldElement.scrollLeft += rightCard.current?.clientWidth
-          ? rightCard.current.clientWidth - 80
+        showfieldElement.scrollLeft += content.current?.clientWidth
+          ? content.current.clientWidth
           : 400;
       }
     } else if (showfieldElement) {
       if (showfieldElement.scrollLeft <= 0) {
         showfieldElement.scrollLeft = showfieldElement.scrollWidth;
       } else {
-        showfieldElement.scrollLeft -= rightCard.current?.clientWidth
-          ? rightCard.current.clientWidth - 80
+        showfieldElement.scrollLeft -= content.current?.clientWidth
+          ? content.current.clientWidth
           : 400;
       }
     }
@@ -39,7 +36,7 @@ function Projects({ rightCard }: ProjectsProps) {
         onClick={() => {
           next(false);
         }}
-        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center left-3 top-1/2 z-10"
+        className="absolute left-3 top-1/2 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-3xl bg-primary"
       >
         <Arrow />
       </div>
@@ -47,45 +44,41 @@ function Projects({ rightCard }: ProjectsProps) {
         onClick={() => {
           next(true);
         }}
-        className="cursor-pointer absolute bg-primary w-10 h-10 rounded-3xl flex justify-center items-center right-3 top-1/2 z-10"
+        className="absolute right-3 top-1/2 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-3xl bg-primary"
       >
         <Arrow className="rotate-180" />
       </div>
 
       <div
         ref={showfield}
-        className="flex justify-between max-w-full items-center w-full relative snap-x overflow-hidden scroll-smooth"
+        className="relative flex w-full max-w-full snap-x items-center justify-between overflow-hidden scroll-smooth"
       >
         {CATEGORIES.Projekte.map((item) => (
           <div
             key={item.title}
-            className={`gap-5 flex items-center justify-center relative flex-col snap-center text-center`}
-            style={{
-              minWidth: rightCard.current?.clientWidth
-                ? rightCard.current.clientWidth - 80 + "px"
-                : "100%",
-            }}
+            className={`relative flex min-w-full snap-center flex-col items-center justify-center gap-5 text-center`}
+            ref={content}
           >
             <img
-              className="max-w-80 w-full"
+              className="w-full max-w-80"
               src={item.imgSrc}
               alt={item.title}
             />
             <h2 className="text-xl">{item.title}</h2>
-            <p className="text-sm text-pretty max-w-96">{item.description}</p>
-            <div className="flex gap-5 text-sm w-full justify-center">
+            <p className="max-w-96 text-pretty text-sm">{item.description}</p>
+            <div className="flex w-full justify-center gap-5 text-sm">
               {item.technology.map((tech, index) => (
                 <span key={index}>{tech}</span>
               ))}
             </div>
-            <div className="flex w-full justify-evenly max-w-96">
+            <div className="flex w-full max-w-96 justify-evenly">
               <a href={item.github} target="_blank">
-                <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
+                <button className="min-w-24 rounded-xl border border-accent bg-transparent p-3 duration-200 hover:bg-accent hover:text-secondary">
                   Github
                 </button>
               </a>
               <a href={"/" + item.title}>
-                <button className="border-accent bg-transparent duration-200 hover:text-secondary hover:bg-accent border min-w-24 p-3 rounded-xl">
+                <button className="min-w-24 rounded-xl border border-accent bg-transparent p-3 duration-200 hover:bg-accent hover:text-secondary">
                   Live
                 </button>
               </a>
