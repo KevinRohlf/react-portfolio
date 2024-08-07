@@ -77,7 +77,7 @@ function Projects() {
                   Github
                 </button>
               </a>
-              <a href={"/" + item.title}>
+              <a href={"/" + item.title.toLowerCase().replace(/\s/g, '')} target="_blank">
                 <button className="min-w-24 rounded-xl border border-accent bg-transparent p-3 duration-200 hover:bg-accent hover:text-secondary">
                   Live
                 </button>
