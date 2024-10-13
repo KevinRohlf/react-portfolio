@@ -5,7 +5,7 @@ import AngularImg from "./assets/angular.svg";
 import ReactImg from "./assets/react.svg";
 import TypeScriptImg from "./assets/typescript.svg";
 import TailwindCSSImg from "./assets/tailwindcss.svg";
-import ScrumImg from "./assets/scrum.webp"
+import ScrumImg from "./assets/scrum.webp";
 import GitImg from "./assets/git.svg";
 import EplImg from "./assets/epl.png";
 import PokedexImg from "./assets/pokedex.png";
@@ -13,7 +13,6 @@ import JoinImg from "./assets/join.png";
 import Projects from "./components/Projects";
 import CVListItem from "./components/CVListItem";
 import Skills from "./components/Skills";
-
 
 export const DATA = [
   "Projekte",
@@ -99,6 +98,13 @@ export const CATEGORIES = {
     },
   ],
   Berufserfahrung: [
+    {
+      company: "deltaDAO AG",
+      title: "Junior Fullstack Entwickler",
+      description:
+        "",
+      dates: "Oktober 2024 - November 2024",
+    },
     {
       company: "publicplan GmbH",
       title: "Formular Entwickler",

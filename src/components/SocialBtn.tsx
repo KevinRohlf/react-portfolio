@@ -6,6 +6,7 @@ function SocialBtn({ imgSrc, href }: { imgSrc: ReactElement; href: string }) {
       className="scale-75 transition-all hover:scale-100"
       href={href}
       target="_blank"
+      aria-label="Social Media"
     >
       {imgSrc}
     </a>
