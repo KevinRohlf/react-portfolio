@@ -5,7 +5,6 @@ import AngularImg from "./assets/angular.svg";
 import ReactImg from "./assets/react.svg";
 import TypeScriptImg from "./assets/typescript.svg";
 import TailwindCSSImg from "./assets/tailwindcss.svg";
-import ScrumImg from "./assets/scrum.webp";
 import GitImg from "./assets/git.svg";
 import EplImg from "./assets/epl.png";
 import PokedexImg from "./assets/pokedex.png";
@@ -89,10 +88,6 @@ export const CATEGORIES = {
       imgSrc: TailwindCSSImg,
     },
     {
-      title: "Scrum",
-      imgSrc: ScrumImg,
-    },
-    {
       title: "Git",
       imgSrc: GitImg,
     },
@@ -100,10 +95,10 @@ export const CATEGORIES = {
   Berufserfahrung: [
     {
       company: "deltaDAO AG",
-      title: "Junior Fullstack Entwickler",
+      title: "Junior Software Entwickler (Frontend)",
       description:
         "",
-      dates: "Oktober 2024 - November 2024",
+      dates: "Oktober 2024 - Heute",
     },
     {
       company: "publicplan GmbH",
