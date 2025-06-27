@@ -12,6 +12,7 @@ import JoinImg from "./assets/join.png";
 import Projects from "./components/Projects";
 import CVListItem from "./components/CVListItem";
 import Skills from "./components/Skills";
+import PSDImg from "./assets/psd.png";
 
 export const DATA = [
   "Projekte",
@@ -91,6 +92,11 @@ export const CATEGORIES = {
       title: "Git",
       imgSrc: GitImg,
     },
+    {
+      title: "Scrum",
+      imgSrc: PSDImg,
+    },
+
   ],
   Berufserfahrung: [
     {
